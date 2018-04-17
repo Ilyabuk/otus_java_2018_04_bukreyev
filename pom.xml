@@ -15,7 +15,6 @@
     <groupId>ru.javaotus042018.bukreyev</groupId>
     <artifactId>otus-bukreyev</artifactId>
     <version>1.0</version>
-
     <build>
         <finalName>${project.name}</finalName>
         <plugins>
@@ -28,7 +27,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>ru.otus.app.App</mainClass>
+                            <mainClass>ru.otus.appJava8.App2</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -44,7 +43,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>ru.otus.app.App</mainClass>
+                            <mainClass>ru.otus.appJava8.App2</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -59,6 +58,39 @@
                 </executions>
             </plugin>
 
+            <plugin>
+                <groupId>com.github.wvengen</groupId>
+                <artifactId>proguard-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals><goal>proguard</goal></goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <options>
+                        <option>-allowaccessmodification</option>
+                        <option>-keep public class * extends java.applet.Applet { *; }</option>
+                        <option>-dontwarn com.google.common.hash.**</option>
+                        <option>-keep public class ru.otus.appJava8.App2</option>
+                        <!--<option>-keepattributes *Annotation*</option>-->
+                        <!--<option>-keepattributes Signature</option>-->
+                        <!--<option>-keepattributes InnerClasses</option>-->
+                        <!--<option>-keepattributes InnerClasses,EnclosingMethod</option>-->
+                        <!--<option>-keepclassmembers</option>-->
+                    </options>
+                    <obfuscate>true</obfuscate>
+                    <injar>${project.name}-jar-with-dependencies.jar</injar>
+                    <outjar>${project.build.finalName}-obfuscated.jar</outjar>
+                    <outputDirectory>${project.build.directory}</outputDirectory>
+                    <proguardInclude>${basedir}/proguard.conf</proguardInclude>
+                    <libs>
+                        <lib>/usr/lib/jvm/java-8-oracle/jre/lib/rt.jar</lib>
+                        <!--<lib>/usr/lib/jvm/java-8-oracle/jre/lib/jsse.jar</lib>-->
+                    </libs>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 
@@ -71,11 +103,11 @@
     </dependencies>
     <properties>
         <project.build.source.Encoding>UTF-8</project.build.source.Encoding>
-        <maven.compiler.source>1.9</maven.compiler.source>
-        <maven.compiler.target>1.9</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <com.google.guava.version>23.0</com.google.guava.version>
         <my.variable>11</my.variable>
-        <java.version>1.9</java.version>
+        <java.version>1.8</java.version>
     </properties>
 
 </project>
