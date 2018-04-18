@@ -72,7 +72,7 @@
                         <option>-allowaccessmodification</option>
                         <option>-keep public class * extends java.applet.Applet { *; }</option>
                         <option>-dontwarn com.google.common.hash.**</option>
-                        <option>-keep public class ru.otus.appJava8.App2</option>
+                        <!--<option>-keep public class ru.otus.appJava8.App2</option>-->
                         <!--<option>-keepattributes *Annotation*</option>-->
                         <!--<option>-keepattributes Signature</option>-->
                         <!--<option>-keepattributes InnerClasses</option>-->
@@ -80,12 +80,12 @@
                         <!--<option>-keepclassmembers</option>-->
                     </options>
                     <obfuscate>true</obfuscate>
-                    <injar>${project.name}-jar-with-dependencies.jar</injar>
-                    <outjar>${project.build.finalName}-obfuscated.jar</outjar>
-                    <outputDirectory>${project.build.directory}</outputDirectory>
+                    <!--<injar>${project.name}-jar-with-dependencies.jar</injar>-->
+                    <!--<outjar>${project.build.finalName}-obfuscated.jar</outjar>-->
+                    <!--<outputDirectory>${project.build.directory}</outputDirectory>-->
                     <proguardInclude>${basedir}/proguard.conf</proguardInclude>
                     <libs>
-                        <lib>/usr/lib/jvm/java-8-oracle/jre/lib/rt.jar</lib>
+                        <!--<lib>/usr/lib/jvm/java-8-oracle/jre/lib/rt.jar</lib>-->
                         <!--<lib>/usr/lib/jvm/java-8-oracle/jre/lib/jsse.jar</lib>-->
                     </libs>
                 </configuration>
